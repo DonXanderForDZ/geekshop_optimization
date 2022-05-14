@@ -24,7 +24,7 @@ def main(request):
 
 def products(request):
     categories = Category.objects.all()
-    products = Product.objects.all()[:3]
+    products = Product.objects.all()[4:7]
     return render(request, "mainapp/products.html", context={
         "title": "Продукты",
         "menu": MENU_LINKS,

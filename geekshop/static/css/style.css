@@ -1146,9 +1146,10 @@ td:first-child {
 }
 
 .related-products .block a img.product_image {
-	float: left;
-	display: block;
+	display: flex;
 	width: 370px;
+	height: 370px;
+	flex-direction: row;
 }
 
 .related-products .block {
