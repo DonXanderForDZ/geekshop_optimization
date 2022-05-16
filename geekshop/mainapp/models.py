@@ -16,8 +16,7 @@ def __str__(self):
 
 
 class Product(models.Model):
-    category = models.ForeignKey(
-        Category, on_delete=models.DO_NOTHING)
+    category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
     name = models.CharField(max_length=25)
     description = models.CharField(max_length=140, blank=True)
     image = models.ImageField(upload_to='product_images', blank=True)
