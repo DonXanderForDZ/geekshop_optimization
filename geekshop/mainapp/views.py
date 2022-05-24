@@ -25,9 +25,11 @@ def main(request):
 def products(request):
     categories = Category.objects.all()
     products = Product.objects.all()[:3]
+    hot_product = products[0]
     return render(request, "mainapp/products.html", context={
         "title": "Продукты",
         "menu": MENU_LINKS,
+        "hot_product": hot_product,
         "products": products,
         "categories": categories,
     })
