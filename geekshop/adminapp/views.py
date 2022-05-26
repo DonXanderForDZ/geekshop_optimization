@@ -12,7 +12,7 @@ from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, CreateView, UpdateView
 from django.urls import reverse, reverse_lazy
-
+from django.utils.decorators import method_decorator
 
 class TitleMixin:
     title = None
@@ -23,13 +23,12 @@ class TitleMixin:
         return context
     
 class CheckSuperuserMixin:
-    
-    @check_is_superuser
+    @method_decorator(check_is_superuser)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
     
-class UserListView(TitleMixin, ListView):
+class UserListView(CheckSuperuserMixin, TitleMixin, ListView):
     template_name = "adminapp/users.html"
     title = "Пользователи"
     
